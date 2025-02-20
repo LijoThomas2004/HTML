@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffdde1);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        .login-container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            width: 300px; /* Reduced width for better centering */
+            max-width: 90%; /* Ensures responsiveness */
+        }
+
+        input {
+            width: calc(100% - 20px); /* Ensures inputs fit inside container */
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .forgot-password {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .forgot-password a {
+            text-decoration: none;
+            color: #007bff;
+            display: flex;
+            align-items: center;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .forgot-password i {
+            margin-right: 5px;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        #error-msg {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form onsubmit="return validateLogin()">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <div class="forgot-password">
+                <a href="#"><i class="fas fa-lock"></i>Forgot Password?</a>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p id="error-msg"></p>
+    </div>
+
+    <script>
+        function validateLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            if (username === "admin" && password === "password") {
+                alert("Login Successful!");
+                return true;
+            } else {
+                document.getElementById('error-msg').innerText = "Invalid Username or Password";
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
